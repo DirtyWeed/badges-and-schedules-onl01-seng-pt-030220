@@ -1,32 +1,27 @@
-speakers = ["Edsger", "Ada", "Charles", "Alan", "Grace", "Linus", "Matz"]
+attendees = ["Edsger", "Ada", "Charles", "Alan", "Grace", "Linus", "Matz"]
 
-def badge_maker(speaker)
-  badge_maker = "Hello, my name is #{speaker}."
+def badge_maker(name)
+  "Hello, my name is #{name}."
 end
 
-def batch_badge_creator(speakers)
-  badges = []
-  speakers.each do |speaker|
-    badges << badge_maker(speaker)
+def batch_badge_creator(attendees)
+  attendees.map do |attendee|
+    "Hello, my name is #{attendee}."
   end
-  badges
 end
 
-def assign_rooms(speakers)
-  assign = []
-  speakers.each_with_index do |speaker, room|
-    assign << "Hello, #{speaker}! You'll be assigned to room #{room + 1}!"
+def assign_rooms(attendees)
+  attendees.each_with_index.map do |attendee, index|
+    "Hello, #{attendee}! You'll be assigned to room #{index+1}!"
   end
-  assign
 end
 
-def printer(speakers)
-  speak = batch_badge_creator(speakers)
-  speak.each do |x|
-    puts x 
+def printer(attendees)
+  batch_badge_creator(attendees).each do |badge|
+    puts badge
   end
-  result = assign_rooms(speakers)
-  result.each do |x|
-    puts x 
+
+  assign_rooms(attendees).each do |assignment|
+    puts assignment
   end
 end
